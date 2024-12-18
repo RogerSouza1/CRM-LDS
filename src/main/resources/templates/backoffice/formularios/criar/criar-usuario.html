@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Criar Funcionário</title>
+    <style>
+        .error {
+            color: #d9534f; /* Vermelho mais suave */
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<h1>Criar Funcionário</h1>
+
+<!-- Exibe mensagem global -->
+<div class="alert alert-danger" th:if="${mensagem}">
+    <span th:text="${mensagem}"></span>
+</div>
+
+<form method="post" th:action="@{/funcionario/criar}" th:object="${funcionario}">
+    <!-- Dados Pessoais -->
+    <div>
+        <label for="nome">Nome</label>
+        <div class="error" th:if="${#fields.hasErrors('nome')}">
+            <span th:errors="*{nome}"></span>
+        </div>
+        <input id="nome" name="nome" required th:field="*{nome}" type="text"/>
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <div class="error" th:if="${#fields.hasErrors('email')}">
+            <span th:errors="*{email}"></span>
+        </div>
+        <input id="email" name="email" required th:field="*{email}" type="email"/>
+    </div>
+
+    <div>
+        <label for="senha">Senha</label>
+        <div class="error" th:if="${#fields.hasErrors('senha')}">
+            <span th:errors="*{senha}"></span>
+        </div>
+        <input id="senha" name="senha" required th:field="*{senha}" type="password"/>
+    </div>
+
+    <div>
+        <label for="confirmarSenha">Confirmar Senha</label>
+        <input id="confirmarSenha" name="confirmarSenha" required type="password"/>
+    </div>
+
+    <div>
+        <label for="cpf">CPF</label>
+        <div class="error" th:if="${#fields.hasErrors('cpf')}">
+            <span th:errors="*{cpf}"></span>
+        </div>
+        <input id="cpf" name="cpf" required th:field="*{cpf}" type="text"/>
+    </div>
+
+    <div>
+        <label for="telefone">Telefone</label>
+        <div class="error" th:if="${#fields.hasErrors('telefone')}">
+            <span th:errors="*{telefone}"></span>
+        </div>
+        <input id="telefone" name="telefone" required th:field="*{telefone}" type="text"/>
+    </div>
+
+    <div>
+        <label for="dataNascimento">Data de Nascimento</label>
+        <div class="error" th:if="${#fields.hasErrors('dataNascimento')}">
+            <span th:errors="*{dataNascimento}"></span>
+        </div>
+        <input id="dataNascimento" name="dataNascimento" required th:field="*{dataNascimento}" type="date"/>
+    </div>
+
+    <!-- Endereço -->
+    <fieldset>
+        <legend>Endereço</legend>
+
+        <div>
+            <label for="endereco.cep">CEP</label>
+            <div class="error" th:if="${#fields.hasErrors('endereco.cep')}">
+                <span th:errors="*{endereco.cep}"></span>
+            </div>
+            <input id="endereco.cep" name="endereco.cep" required th:field="*{endereco.cep}" type="text"/>
+        </div>
+
+        <div>
+            <label for="endereco.logradouro">Logradouro</label>
+            <div class="error" th:if="${#fields.hasErrors('endereco.logradouro')}">
+                <span th:errors="*{endereco.logradouro}"></span>
+            </div>
+            <input id="endereco.logradouro" name="endereco.logradouro" required th:field="*{endereco.logradouro}"
+                   type="text"/>
+        </div>
+
+        <div>
+            <label for="endereco.numero">Número</label>
+            <div class="error" th:if="${#fields.hasErrors('endereco.numero')}">
+                <span th:errors="*{endereco.numero}"></span>
+            </div>
+            <input id="endereco.numero" name="endereco.numero" required th:field="*{endereco.numero}" type="text"/>
+        </div>
+
+        <div>
+            <label for="endereco.complemento">Complemento</label>
+            <div class="error" th:if="${#fields.hasErrors('endereco.complemento')}">
+                <span th:errors="*{endereco.complemento}"></span>
+            </div>
+            <input id="endereco.complemento" name="endereco.complemento" th:field="*{endereco.complemento}"
+                   type="text"/>
+        </div>
+
+        <div>
+            <label for="endereco.bairro">Bairro</label>
+            <div class="error" th:if="${#fields.hasErrors('endereco.bairro')}">
+                <span th:errors="*{endereco.bairro}"></span>
+            </div>
+            <input id="endereco.bairro" name="endereco.bairro" required th:field="*{endereco.bairro}" type="text"/>
+        </div>
+
+        <div>
+            <label for="endereco.cidade">Cidade</label>
+            <div class="error" th:if="${#fields.hasErrors('endereco.cidade')}">
+                <span th:errors="*{endereco.cidade}"></span>
+            </div>
+            <input id="endereco.cidade" name="endereco.cidade" required th:field="*{endereco.cidade}" type="text"/>
+        </div>
+
+        <div>
+            <label for="endereco.estado">Estado</label>
+            <div class="error" th:if="${#fields.hasErrors('endereco.estado')}">
+                <span th:errors="*{endereco.estado}"></span>
+            </div>
+            <input id="endereco.estado" name="endereco.estado" required th:field="*{endereco.estado}" type="text"/>
+        </div>
+
+    </fieldset>
+
+    <div>
+        <button type="submit">Salvar Funcionário</button>
+    </div>
+</form>
+
+</body>
+</html>
